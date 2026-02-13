@@ -9,7 +9,8 @@ namespace CharacterApi.Services
         {
             new Character { Id = 1, Name = "Mario", Game = "Super Mario", Role = "Plumber" },
             new Character { Id = 2, Name = "Link", Game = "The Legend of Zelda", Role = "Hero" },
-            new Character { Id = 3, Name = "Master Chief", Game = "Halo", Role = "Spartan" }
+            new Character { Id = 3, Name = "Master Chief", Game = "Halo", Role = "Spartan" },
+            new Character { Id = 4, Name = "Pica pau", Game = "carioca simulator", Role = "tecladista de churrascaria" }
         };
         public Task<Character> AddCharacterAsync(Character character)
         {
@@ -21,14 +22,12 @@ namespace CharacterApi.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<Character>> GetAllCharactersAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<Character>> GetAllCharactersAsync() => await Task.FromResult(characters);
 
-        public Task<Character> GetCharacterByIdAsync(int id)
+        public async  Task<Character> GetCharacterByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = characters.FirstOrDefault(c => c.Id == id);
+            return await Task.FromResult(result);
         }
 
         public Task<bool> UpdatedCharacterAsync(int id, Character character)
