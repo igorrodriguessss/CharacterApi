@@ -1,0 +1,61 @@
+<VSTemplate Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>ServiceTemplate</Name>
+    <Description>A fully functional service with event logging and installer</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>ServiceTemplate</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="ServiceTemplate.csproj" File="ServiceTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="app.config">app.config</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="app.ico">app.ico</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="app.manifest">app.manifest</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CmdTool.config">CmdTool.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Commands.cs">Commands.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Resources" TargetFolderName="Resources">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EventLogging.cs">EventLogging.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Exceptions.resx">Exceptions.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Exceptions.Designer.cs">Exceptions.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FormatString.resx">FormatString.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FormatString.Designer.cs">FormatString.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Messages.Constants.cs">Messages.Constants.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Messages.InstallUtil.cs">Messages.InstallUtil.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Messages.resx">Messages.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Messages.Designer.cs">Messages.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Service" TargetFolderName="Service">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomInstaller.cs">CustomInstaller.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomServiceInstaller.cs">CustomServiceInstaller.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IPauseAndContinue.cs">IPauseAndContinue.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IsolationContext.cs">IsolationContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceAccessRights.cs">ServiceAccessRights.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceAttributes.cs">ServiceAttributes.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceProcess.cs">ServiceProcess.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Win32Services.cs">Win32Services.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ServiceImplementation.cs">ServiceImplementation.cs</ProjectItem>
+      <Folder Name="Tools" TargetFolderName="Tools">
+        <ProjectItem ReplaceParameters="false" TargetFileName="CmdTool.exe">CmdTool.exe</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="CSharpTest.Net.Generators.exe">CSharpTest.Net.Generators.exe</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="CSharpTest.Net.Library.dll">CSharpTest.Net.Library.dll</ProjectItem>
+      </Folder>
+      <Folder Name="Utilities" TargetFolderName="Utilities">
+        <ProjectItem ReplaceParameters="true" TargetFileName="InstallUtil.cs">InstallUtil.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
