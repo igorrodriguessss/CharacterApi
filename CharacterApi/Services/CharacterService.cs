@@ -24,7 +24,7 @@ namespace CharacterApi.Services
 
         public async Task<List<Character>> GetAllCharactersAsync() => await Task.FromResult(characters);
 
-        public async  Task<Character> GetCharacterByIdAsync(int id)
+        public async  Task<Character?> GetCharacterByIdAsync(int id)
         {
             var result = characters.FirstOrDefault(c => c.Id == id);
             return await Task.FromResult(result);
