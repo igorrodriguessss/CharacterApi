@@ -10,7 +10,7 @@ namespace CharacterApi.Services
             new Character { Id = 1, Name = "Mario", Game = "Super Mario", Role = "Plumber" },
             new Character { Id = 2, Name = "Link", Game = "The Legend of Zelda", Role = "Hero" },
             new Character { Id = 3, Name = "Master Chief", Game = "Halo", Role = "Spartan" },
-            new Character { Id = 4, Name = "Pica pau", Game = "carioca simulator", Role = "tecladista de churrascaria" }
+            new Character { Id = 4, Name = "Pica pau", Game = "Pica pau o jogo", Role = "Ave azul de cabelo vermelho" }
         };
         public Task<Character> AddCharacterAsync(Character character)
         {
