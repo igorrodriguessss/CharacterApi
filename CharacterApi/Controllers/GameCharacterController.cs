@@ -1,4 +1,5 @@
-﻿using CharacterApi.Models;
+﻿using CharacterApi.Dtos;
+using CharacterApi.Models;
 using CharacterApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +12,22 @@ namespace CharacterApi.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<List<Character>>> GetCharacters() => Ok(await service.GetAllCharactersAsync());
+        public async Task<ActionResult<List<CharacterResponse>>> GetCharacters() => Ok(await service.GetAllCharactersAsync());
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Character>> GetCharacter(int id)
+        public async Task<ActionResult<CharacterResponse>> GetCharacter(int id)
         {
             var character = await service.GetCharacterByIdAsync(id);
             return character is null ? NotFound("Personagem com o Id mencionado não foi encontrado") : Ok(character);
         }
+        //[HttpPost]
+        //public ActionResult<Character> AddCharacter(Character character)
+        //{
+        //    if(character == null)
+        //    {
+        //        return BadRequest("O personagem não pode ser nulo");
+        //    }
+        //    character.Id = 
+        //}
     }
 }
