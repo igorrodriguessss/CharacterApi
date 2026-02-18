@@ -9,18 +9,44 @@ namespace CharacterApi.Services
 
 
         
-        public Task<CharacterResponse> AddCharacterAsync(Character character)
+        public async Task<CharacterResponse> AddCharacterAsync(CreateCharacterRequest character)
         {
-            throw new NotImplementedException();
+            var newCharacter = new Character
+            {
+                Name = character.Name,
+                Game = character.Game,
+                Role = character.Role
+            };
+            context.Characters.Add(newCharacter);
+            await context.SaveChangesAsync();
+
+            return new CharacterResponse
+            {
+                Id = newCharacter.Id,
+                Name = newCharacter.Name,
+                Game = newCharacter.Game,
+                Role = newCharacter.Role
+            };
+
         }
 
-        public Task<bool> DeleteCharacterAsync(int id)
+        public async Task<bool> DeleteCharacterAsync(int id)
         {
-            throw new NotImplementedException();
+            var usuarioParaDeletar = await context.Characters.FindAsync(id);
+            if (usuarioParaDeletar is null)
+            {
+                return false;
+            }
+            context.Characters.Remove(usuarioParaDeletar);
+            await context.SaveChangesAsync();
+
+            return true;
+
         }
 
         public async Task<List<CharacterResponse>> GetAllCharactersAsync() => await context.Characters.Select(c => new CharacterResponse
         {
+            Id = c.Id,
             Name = c.Name,
             Game = c.Game,
             Role = c.Role
@@ -30,6 +56,7 @@ namespace CharacterApi.Services
         {
             var result = await context.Characters.Where(c => c.Id == id).Select(c => new CharacterResponse
             {
+                Id = c.Id,
                 Name = c.Name,
                 Game = c.Game,
                 Role = c.Role
@@ -38,9 +65,20 @@ namespace CharacterApi.Services
             return result; 
         }
 
-        public Task<bool> UpdatedCharacterAsync(int id, Character character)
+        public async Task<bool> UpdatedCharacterAsync(int id, UpdateCharacterRequest character)
         {
-            throw new NotImplementedException();
+            var existente = await context.Characters.FindAsync(id);
+            if(existente is null)
+            {
+                return false;
+            }
+            existente.Name = character.Name;
+            existente.Game = character.Game;
+            existente.Role= character.Role;
+
+            await context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

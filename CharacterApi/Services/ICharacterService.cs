@@ -6,8 +6,8 @@ namespace CharacterApi.Services
     {
         Task<List<CharacterResponse>> GetAllCharactersAsync();
         Task<CharacterResponse?> GetCharacterByIdAsync(int id);
-        Task<CharacterResponse> AddCharacterAsync(Character character);
-        Task<bool> UpdatedCharacterAsync(int id, Character character);
+        Task<CharacterResponse> AddCharacterAsync(CreateCharacterRequest character);
+        Task<bool> UpdatedCharacterAsync(int id, UpdateCharacterRequest character);
         Task<bool> DeleteCharacterAsync(int id);
     }
 }

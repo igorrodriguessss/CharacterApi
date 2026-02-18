@@ -20,14 +20,25 @@ namespace CharacterApi.Controllers
             var character = await service.GetCharacterByIdAsync(id);
             return character is null ? NotFound("Personagem com o Id mencionado não foi encontrado") : Ok(character);
         }
-        //[HttpPost]
-        //public ActionResult<Character> AddCharacter(Character character)
-        //{
-        //    if(character == null)
-        //    {
-        //        return BadRequest("O personagem não pode ser nulo");
-        //    }
-        //    character.Id = 
-        //}
+        [HttpPost]
+        public async Task<ActionResult<CharacterResponse>> AddCharacter(CreateCharacterRequest character)
+        {
+            var createdCharacter = await service.AddCharacterAsync(character);
+            return CreatedAtAction(nameof(GetCharacter), new { id = createdCharacter.Id }, createdCharacter);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCharacter(int id, UpdateCharacterRequest character)
+        {
+            var isUpdated = await service.UpdatedCharacterAsync(id, character);
+            return isUpdated ? NoContent() : NotFound("Personagem com o Id mencionado não foi encontrado");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCharacter(int id)
+        {
+            var isDeleted = await service.DeleteCharacterAsync(id);
+            return isDeleted ? NoContent() : NotFound("Personagem com o Id mencionado não foi encontrado");
+        }
     }
 }
